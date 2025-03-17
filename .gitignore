@@ -1,0 +1,24 @@
+# 환경 변수 파일
+.env
+
+# Python 캐시 파일
+__pycache__/
+*.py[cod]
+*$py.class
+
+# 가상 환경
+venv/
+env/
+ENV/
+
+# 로그 파일
+*.log
+
+# 이미지 파일 (필요한 경우 주석 처리)
+# *.png
+# *.jpg
+# *.jpeg
+
+# 기타 시스템 파일
+.DS_Store
+Thumbs.db 

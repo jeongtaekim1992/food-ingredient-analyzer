@@ -1,11 +1,24 @@
 from typing import List, Optional, Dict, Any, TypedDict
 import json
+import os
+from dotenv import load_dotenv
 
 from pydantic import BaseModel, Field
 from PIL import Image
 import google.generativeai as genai
+import streamlit as st
 
-API_KEY = "AIzaSyCp1fqnZlpcSFccZclPx5oyRrsxzG0ibPA"
+# 환경 변수 로드
+load_dotenv()
+
+# API 키를 환경 변수 또는 Streamlit secrets에서 가져옴
+try:
+    # Streamlit Cloud에서 실행 중인 경우
+    API_KEY = st.secrets["gemini"]["api_key"]
+except Exception:
+    # 로컬에서 실행 중인 경우
+    API_KEY = os.getenv("GEMINI_API_KEY", "AIzaSyCp1fqnZlpcSFccZclPx5oyRrsxzG0ibPA")
+
 genai.configure(api_key=API_KEY)
 
 IMAGE_PATH = '/content/drive/MyDrive/ocr/ocr_test_img_ko.png'
